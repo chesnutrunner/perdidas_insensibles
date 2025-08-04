@@ -1,0 +1,12 @@
+name: Build Flutter APK
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.19.0'
+    - run: cd flutter_app && flutter pub get
+    - run: cd flutter_app && flutter build apk --release
